@@ -9,7 +9,24 @@ namespace Tunes.ConsoleApp
     {
         static void Main(string[] args)
         {
-            AdicionarAlbum();
+            AdicionarGenero();
+        }
+
+        private static void AdicionarGenero()
+        {
+            using (var contexto = new TunesContext())
+            {
+                var genero = new Genero
+                {
+                    Nome = "Country Pop"
+                };
+
+                contexto.Generos.Add(genero);
+
+                contexto.SaveChanges();
+            }
+
+            Console.ReadKey();
         }
 
         private static void AdicionarAlbum()

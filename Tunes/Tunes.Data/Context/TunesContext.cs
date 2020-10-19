@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Console;
-using Microsoft.Extensions.Options;
-using System;
 using Tunes.Business.Models;
 
 namespace Tunes.Data.Context
@@ -11,6 +8,7 @@ namespace Tunes.Data.Context
     {
         public DbSet<Artista> Artistas { get; set; }
         public DbSet<Album> Albuns { get; set; }
+        public DbSet<Genero> Generos { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
