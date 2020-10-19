@@ -10,6 +10,7 @@ namespace Tunes.Data.Context
     public class TunesContext : DbContext
     {
         public DbSet<Artista> Artistas { get; set; }
+        public DbSet<Album> Albuns { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

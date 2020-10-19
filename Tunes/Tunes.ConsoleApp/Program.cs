@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Tunes.Business.Models;
 using Tunes.Data.Context;
 
@@ -8,7 +9,25 @@ namespace Tunes.ConsoleApp
     {
         static void Main(string[] args)
         {
-            AdicionarArtista();
+            AdicionarAlbum();
+        }
+
+        private static void AdicionarAlbum()
+        {
+            using (var contexto = new TunesContext())
+            {
+                var album = new Album
+                {
+                    Titulo = "Fearless",
+                    Artista = contexto.Artistas.First()
+                };
+
+                contexto.Albuns.Add(album);
+
+                contexto.SaveChanges();
+            }
+
+            Console.ReadKey();
         }
 
         private static void AdicionarArtista()
@@ -20,7 +39,7 @@ namespace Tunes.ConsoleApp
                     Nome = "Taylor Swift"
                 };
 
-                contexto.Add(artista);
+                contexto.Artistas.Add(artista);
                 contexto.SaveChanges();
             }
 

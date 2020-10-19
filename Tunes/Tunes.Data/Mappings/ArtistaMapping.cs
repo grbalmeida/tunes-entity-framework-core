@@ -9,7 +9,7 @@ namespace Tunes.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Artista> builder)
         {
-            builder.ToTable("artistas");
+            builder.ToTable("artista");
 
             builder.Property(a => a.ArtistaId)
                 .HasColumnName("artista_id");
