@@ -9,6 +9,7 @@ namespace Tunes.Data.Context
         public DbSet<Artista> Artistas { get; set; }
         public DbSet<Album> Albuns { get; set; }
         public DbSet<Genero> Generos { get; set; }
+        public DbSet<TipoMidia> TiposDeMidia { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

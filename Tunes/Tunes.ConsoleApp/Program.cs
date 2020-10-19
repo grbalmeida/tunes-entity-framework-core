@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Tunes.Business.Models;
 using Tunes.Data.Context;
@@ -9,7 +10,24 @@ namespace Tunes.ConsoleApp
     {
         static void Main(string[] args)
         {
-            AdicionarGenero();
+            AdicionarTipoMidia();
+        }
+
+        private static void AdicionarTipoMidia()
+        {
+            using (var contexto = new TunesContext())
+            {
+                var tipoMidia = new TipoMidia
+                {
+                    Nome = "MP3"
+                };
+
+                contexto.TiposDeMidia.Add(tipoMidia);
+
+                contexto.SaveChanges();
+            }
+
+            Console.ReadKey();
         }
 
         private static void AdicionarGenero()
