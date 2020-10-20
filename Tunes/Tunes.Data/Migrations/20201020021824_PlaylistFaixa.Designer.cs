@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tunes.Data.Context;
 
 namespace Tunes.Data.Migrations
 {
     [DbContext(typeof(TunesContext))]
-    partial class TunesContextModelSnapshot : ModelSnapshot
+    [Migration("20201020021824_PlaylistFaixa")]
+    partial class PlaylistFaixa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

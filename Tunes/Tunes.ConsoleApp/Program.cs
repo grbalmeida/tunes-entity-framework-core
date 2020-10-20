@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Tunes.Business.Models;
 using Tunes.Data.Context;
@@ -9,7 +10,56 @@ namespace Tunes.ConsoleApp
     {
         static void Main(string[] args)
         {
-            AdicionarPlaylist();
+            AdicionarRelacionamentoEntrePlaylistEFaixas();
+        }
+
+        private static void AdicionarRelacionamentoEntrePlaylistEFaixas()
+        {
+            using (var contexto = new TunesContext())
+            {
+                var faixa = new Faixa
+                {
+                    Nome = "Despacito",
+                    Compositor = "Luis Fonsi",
+                    Album = new Album
+                    {
+                        Titulo = "Despacito",
+                        Artista = new Artista
+                        {
+                            Nome = "Luis Fonsi"
+                        }
+                    },
+                    Bytes = 50000,
+                    Milissegundos = 1000 * 60 * 4,
+                    Genero = new Genero
+                    {
+                        Nome = "Latino"
+                    },
+                    PrecoUnitario = 5,
+                    TipoMidia = new TipoMidia
+                    {
+                        Nome = "MP4"
+                    }
+                };
+
+                var playlist = new Playlist
+                {
+                    Nome = "Mais tocada",
+                    Faixas = new List<PlaylistFaixa>
+                    {
+                        new PlaylistFaixa
+                        {
+                            Faixa = faixa
+                        }
+                    }
+                };
+
+                contexto.Playlists.Add(playlist);
+
+                contexto.SaveChanges();
+            }
+
+            Console.ReadKey();
         }
 
         private static void AdicionarPlaylist()

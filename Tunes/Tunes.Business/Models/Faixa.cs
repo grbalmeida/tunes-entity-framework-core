@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 
 namespace Tunes.Business.Models
 {
@@ -14,5 +14,11 @@ namespace Tunes.Business.Models
         public Album Album { get; set; }
         public TipoMidia TipoMidia { get; set; }
         public Genero Genero { get; set; }
+        public IList<PlaylistFaixa> Playlists { get; set; }
+
+        public Faixa()
+        {
+            Playlists = new List<PlaylistFaixa>();
+        }
     }
 }
