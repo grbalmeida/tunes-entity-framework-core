@@ -10,7 +10,46 @@ namespace Tunes.ConsoleApp
     {
         static void Main(string[] args)
         {
-            AdicionarFaixa();
+            AdicionarFuncionario();
+        }
+
+        private static void AdicionarFuncionario()
+        {
+            using (var contexto = new TunesContext())
+            {
+                var funcionario = new Funcionario
+                {
+                    PrimeiroNome = "Maria",
+                    Sobrenome = "da Silva",
+                    Titulo = "Maria da Silva",
+                    Cidade = "São Paulo",
+                    Estado = "São Paulo",
+                    DataAdmissao = new DateTime(2020, 1, 1),
+                    DataNascimento = new DateTime(1988, 10, 23),
+                    Email = "maria@gmail.com",
+                    Endereco = "Rua das Flores",
+                    CEP = "11111-111",
+                    Fax = "12121212",
+                    Fone = "13131313",
+                    Pais = "Brasil",
+                    Gerente = new Funcionario
+                    {
+                        PrimeiroNome = "Jorge",
+                        Sobrenome = "Fonseca",
+                        Titulo = "Jorge Fonseca",
+                        DataAdmissao = new DateTime(2017, 5, 20),
+                        DataNascimento = new DateTime(1980, 8, 15),
+                        Email = "jorge@outlook.com",
+                        Fone = "15153030"
+                    }
+                };
+
+                contexto.Funcionarios.Add(funcionario);
+
+                contexto.SaveChanges();
+            }
+
+            Console.ReadKey();
         }
 
         private static void AdicionarFaixa()

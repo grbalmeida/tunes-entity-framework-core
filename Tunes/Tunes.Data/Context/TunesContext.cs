@@ -11,6 +11,7 @@ namespace Tunes.Data.Context
         public DbSet<Genero> Generos { get; set; }
         public DbSet<TipoMidia> TiposDeMidia { get; set; }
         public DbSet<Faixa> Faixas { get; set; }
+        public DbSet<Funcionario> Funcionarios { get; set; }
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
