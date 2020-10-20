@@ -22,10 +22,12 @@ namespace Tunes.Business.Models
 
         public Funcionario Gerente { get; set; }
         public IList<Funcionario> Equipe { get; set; }
+        public IList<Cliente> ClientesAtendidos { get; set; }
 
         public Funcionario()
         {
             Equipe = new List<Funcionario>();
+            ClientesAtendidos = new List<Cliente>();
         }
     }
 }

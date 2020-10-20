@@ -10,7 +10,35 @@ namespace Tunes.ConsoleApp
     {
         static void Main(string[] args)
         {
-            AdicionarRelacionamentoEntrePlaylistEFaixas();
+            AdicionarCliente();
+        }
+
+        private static void AdicionarCliente()
+        {
+            using (var contexto = new TunesContext())
+            {
+                var cliente = new Cliente
+                {
+                    PrimeiroNome = "Rodolfo",
+                    Sobrenome = "Pires",
+                    Email = "rodolfo@yahoo.com.br",
+                    Cidade = "Belo Horizonte",
+                    Estado = "Minas Gerais",
+                    CEP = "19191-000",
+                    Empresa = "Mercearia do Pires",
+                    Endereco = "Rua das Magnólias",
+                    Fax = "14411441",
+                    Fone = "17711771",
+                    Pais = "Brasil",
+                    Suporte = contexto.Funcionarios.First()
+                };
+
+                contexto.Clientes.Add(cliente);
+
+                contexto.SaveChanges();
+            }
+
+            Console.ReadKey();
         }
 
         private static void AdicionarRelacionamentoEntrePlaylistEFaixas()

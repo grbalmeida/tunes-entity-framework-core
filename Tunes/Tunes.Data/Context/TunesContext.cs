@@ -13,6 +13,7 @@ namespace Tunes.Data.Context
         public DbSet<Faixa> Faixas { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
         public DbSet<Playlist> Playlists { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
