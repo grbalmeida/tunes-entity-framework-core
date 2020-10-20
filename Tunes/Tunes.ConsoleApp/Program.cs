@@ -10,7 +10,31 @@ namespace Tunes.ConsoleApp
     {
         static void Main(string[] args)
         {
-            AdicionarTipoMidia();
+            AdicionarFaixa();
+        }
+
+        private static void AdicionarFaixa()
+        {
+            using (var contexto = new TunesContext())
+            {
+                var faixa = new Faixa
+                {
+                    Nome = "Bad Blood",
+                    Album = contexto.Albuns.First(),
+                    Genero = contexto.Generos.First(),
+                    TipoMidia = contexto.TiposDeMidia.First(),
+                    PrecoUnitario = 10,
+                    Bytes = 50000,
+                    Milissegundos = 1000 * 60 * 3,
+                    Compositor = "Taylor Swift"
+                };
+
+                contexto.Faixas.Add(faixa);
+
+                contexto.SaveChanges();
+            }
+
+            Console.ReadKey();
         }
 
         private static void AdicionarTipoMidia()
