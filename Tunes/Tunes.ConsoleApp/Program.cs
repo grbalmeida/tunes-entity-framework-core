@@ -10,7 +10,31 @@ namespace Tunes.ConsoleApp
     {
         static void Main(string[] args)
         {
-            AdicionarCliente();
+            AdicionarNotaFiscal();
+        }
+
+        private static void AdicionarNotaFiscal()
+        {
+            using (var contexto = new TunesContext())
+            {
+                var notaFiscal = new NotaFiscal
+                {
+                    CEP = "14000-000",
+                    Endereco = "Rua dos Arcos",
+                    Cidade = "Rio de Janeiro",
+                    Estado = "Rio de Janeiro",
+                    Pais = "Brasil",
+                    Total = 1000,
+                    DataNotaFiscal = new DateTime(2020, 1, 30),
+                    Cliente = contexto.Clientes.First()
+                };
+
+                contexto.NotasFiscais.Add(notaFiscal);
+
+                contexto.SaveChanges();
+            }
+
+            Console.ReadKey();
         }
 
         private static void AdicionarCliente()

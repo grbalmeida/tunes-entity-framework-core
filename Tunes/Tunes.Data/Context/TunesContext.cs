@@ -14,6 +14,7 @@ namespace Tunes.Data.Context
         public DbSet<Funcionario> Funcionarios { get; set; }
         public DbSet<Playlist> Playlists { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<NotaFiscal> NotasFiscais { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

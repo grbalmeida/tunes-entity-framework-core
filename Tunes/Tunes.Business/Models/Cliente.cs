@@ -1,4 +1,6 @@
-﻿namespace Tunes.Business.Models
+﻿using System.Collections.Generic;
+
+namespace Tunes.Business.Models
 {
     public class Cliente
     {
@@ -16,5 +18,11 @@
         public string Email { get; set; }
         
         public Funcionario Suporte { get; set; }
+        public IList<NotaFiscal> NotasFiscais { get; set; }
+
+        public Cliente()
+        {
+            NotasFiscais = new List<NotaFiscal>();
+        }
     }
 }

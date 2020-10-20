@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
 using Tunes.Business.Models;
 
 namespace Tunes.Data.Mappings
@@ -61,6 +62,10 @@ namespace Tunes.Data.Mappings
                 .IsRequired();
 
             builder.Property<int?>("suporte_id");
+
+            builder.Property<DateTime>("data_criacao")
+                .HasColumnType("datetime")
+                .HasDefaultValueSql("getdate()");
 
             builder.HasOne(c => c.Suporte)
                 .WithMany(f => f.ClientesAtendidos)
