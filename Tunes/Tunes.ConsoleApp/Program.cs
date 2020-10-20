@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Tunes.Business.Models;
 using Tunes.Data.Context;
@@ -10,7 +9,24 @@ namespace Tunes.ConsoleApp
     {
         static void Main(string[] args)
         {
-            AdicionarFuncionario();
+            AdicionarPlaylist();
+        }
+
+        private static void AdicionarPlaylist()
+        {
+            using (var contexto = new TunesContext())
+            {
+                var playlist = new Playlist
+                {
+                    Nome = "50 músicas mais tocadas do verão"
+                };
+
+                contexto.Playlists.Add(playlist);
+
+                contexto.SaveChanges();
+            }
+
+            Console.ReadKey();
         }
 
         private static void AdicionarFuncionario()

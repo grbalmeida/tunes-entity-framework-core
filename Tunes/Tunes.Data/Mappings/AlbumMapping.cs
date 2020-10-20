@@ -19,7 +19,7 @@ namespace Tunes.Data.Mappings
                 .HasColumnType("varchar(160)")
                 .IsRequired();
 
-            builder.Property<DateTime>("data_cricao")
+            builder.Property<DateTime>("data_criacao")
                 .HasColumnType("datetime")
                 .HasDefaultValueSql("getdate()");
 
