@@ -10,7 +10,48 @@ namespace Tunes.ConsoleApp
     {
         static void Main(string[] args)
         {
-            AdicionarNotaFiscal();
+            AdicionarItemNotaFiscal();
+        }
+
+        private static void AdicionarItemNotaFiscal()
+        {
+            using (var contexto = new TunesContext())
+            {
+                var itensNotaFiscal = new List<ItemNotaFiscal>
+                {
+                    new ItemNotaFiscal
+                    {
+                        Faixa = contexto.Faixas.First(),
+                        PrecoUnitario = 10,
+                        Quantidade = 2
+                    },
+                    new ItemNotaFiscal
+                    {
+                        Faixa = contexto.Faixas.First(),
+                        PrecoUnitario = 25,
+                        Quantidade = 10
+                    }
+                };
+
+                var notaFiscal = new NotaFiscal
+                {
+                    CEP = "14000-000",
+                    Endereco = "Rua dos Arcos",
+                    Cidade = "Rio de Janeiro",
+                    Estado = "Rio de Janeiro",
+                    Pais = "Brasil",
+                    Total = itensNotaFiscal.Sum(inf => inf.Quantidade * inf.PrecoUnitario),
+                    DataNotaFiscal = new DateTime(2020, 1, 30),
+                    Cliente = contexto.Clientes.First(),
+                    ItensNotaFiscal = itensNotaFiscal
+                };
+
+                contexto.NotasFiscais.Add(notaFiscal);
+
+                contexto.SaveChanges();
+            }
+
+            Console.ReadKey();
         }
 
         private static void AdicionarNotaFiscal()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Tunes.Business.Models
 {
@@ -14,5 +15,11 @@ namespace Tunes.Business.Models
         public decimal Total { get; set; }
 
         public Cliente Cliente { get; set; }
+        public IList<ItemNotaFiscal> ItensNotaFiscal { get; set; }
+
+        public NotaFiscal()
+        {
+            ItensNotaFiscal = new List<ItemNotaFiscal>();
+        }
     }
 }

@@ -15,10 +15,12 @@ namespace Tunes.Business.Models
         public TipoMidia TipoMidia { get; set; }
         public Genero Genero { get; set; }
         public IList<PlaylistFaixa> Playlists { get; set; }
+        public IList<ItemNotaFiscal> ItensNotaFiscal { get; set; }
 
         public Faixa()
         {
             Playlists = new List<PlaylistFaixa>();
+            ItensNotaFiscal = new List<ItemNotaFiscal>();
         }
     }
 }
